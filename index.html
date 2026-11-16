@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>消える灯りの部屋</title>
+    <link rel="icon" type="image/svg+xml" href="./thumbnail.svg" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="view"></div>
+    <div id="crosshair" aria-hidden="true"></div>
+    <div id="hud">
+      <div id="digits" aria-label="揃った数字"></div>
+      <ul id="clues"></ul>
+      <div id="items"></div>
+    </div>
+    <p id="prompt"></p>
+    <p id="toast" role="status"></p>
+    <button id="hint" type="button">ヒント</button>
+    <div id="pad" aria-label="移動">
+      <button type="button" data-move="f" aria-label="前">↑</button>
+      <button type="button" data-move="l" aria-label="左">←</button>
+      <button type="button" data-move="b" aria-label="後ろ">↓</button>
+      <button type="button" data-move="r" aria-label="右">→</button>
+    </div>
+
+    <div id="intro">
+      <div class="card">
+        <p class="eyebrow">three.js escape</p>
+        <h1>消える灯りの部屋</h1>
+        <p>扉は4桁のコードでロックされている。部屋の中を調べて、明かりが落ちる前に脱出しよう。</p>
+        <ul>
+          <li>ドラッグで視点を動かす</li>
+          <li>WASD / 矢印、または左下のボタンで移動</li>
+          <li>クリック、または E で調べる</li>
+        </ul>
+        <button id="start" type="button">部屋に入る</button>
+      </div>
+    </div>
+
+    <div id="note-card" hidden>
+      <div class="card">
+        <h2>引き出しのメモ</h2>
+        <p>2番目は時計の短針。<br />3番目は星の数。<br />最後は赤い本の数。</p>
+        <button id="note-close" type="button">閉じる</button>
+      </div>
+    </div>
+
+    <div id="keypad" hidden>
+      <div class="card keypad-card">
+        <h2>扉のテンキー</h2>
+        <p id="entry" aria-live="polite">----</p>
+        <div class="keys">
+          <button type="button" data-digit="1">1</button>
+          <button type="button" data-digit="2">2</button>
+          <button type="button" data-digit="3">3</button>
+          <button type="button" data-digit="4">4</button>
+          <button type="button" data-digit="5">5</button>
+          <button type="button" data-digit="6">6</button>
+          <button type="button" data-digit="7">7</button>
+          <button type="button" data-digit="8">8</button>
+          <button type="button" data-digit="9">9</button>
+          <button type="button" id="key-clear">消</button>
+          <button type="button" data-digit="0">0</button>
+          <button type="button" id="key-ok">決定</button>
+        </div>
+        <button id="key-close" type="button" class="text-btn">やめる</button>
+      </div>
+    </div>
+
+    <div id="ending" hidden>
+      <div class="card">
+        <p class="eyebrow">escaped</p>
+        <h1>脱出できた</h1>
+        <p id="ending-time"></p>
+        <button id="replay" type="button">もう一度</button>
+      </div>
+    </div>
+
+    <script
+      defer
+      src="/assets/tanaru-embed.js"
+      data-tanaru-embed="true"
+      data-app-id="escape-room"
+      data-tanaru-url="https://tanaru.ai/"
+    ></script>
+    <script type="module" src="./game.js"></script>
+  </body>
+</html>
